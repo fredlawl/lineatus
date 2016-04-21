@@ -2,6 +2,8 @@
 
 Lineatus accepts a photo, converts to grayscale, crops to 512x512, and then re-creates the image with only straight lines.
 
+This project was created for our CSC-545 Computer Images, Speech, and Music course.
+
 ## Contributors
 * [ben093](https://github.com/ben093)
 * [danielFennessy](https://github.com/danielFennessey)
