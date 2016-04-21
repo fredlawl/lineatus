@@ -14,7 +14,7 @@
  * =========================================================
  */
 
-public void tbNumOfLinesChanged(GTextField source, GEvent event) { //_CODE_:tbNumOfLines:220142:
+public void tbOnNumOfLinesChange(GTextField source, GEvent event) { //_CODE_:tbNumOfLines:220142:
   println("tbNumOfLines - GTextField >> GEvent." + event + " @ " + millis());
 } //_CODE_:tbNumOfLines:220142:
 
@@ -56,7 +56,7 @@ public void createGUI(){
   tbNumOfLines.setText("1600");
   tbNumOfLines.setPromptText("Number of Lines");
   tbNumOfLines.setOpaque(true);
-  tbNumOfLines.addEventHandler(this, "tbNumOfLinesChanged");
+  tbNumOfLines.addEventHandler(this, "tbOnNumOfLinesChange");
   tbNumOfGenerations = new GTextField(this, 620, 120, 160, 30, G4P.SCROLLBARS_NONE);
   tbNumOfGenerations.setText("200");
   tbNumOfGenerations.setPromptText("Number of Generations");
