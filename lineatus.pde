@@ -3,6 +3,7 @@ import g4p_controls.*;
 
 PGraphics pg;
 PImage splashImage;
+PImage uploadedImage = null;
 
 public void setup(){
   size(800, 512, JAVA2D);
@@ -17,7 +18,11 @@ public void draw(){
 
 public void drawSketch() {
   pg.beginDraw();
-  pg.image(splashImage, 0, 0);
+  if (uploadedImage == null) {
+    pg.image(splashImage, 0, 0);
+  } else {
+    pg.image(uploadedImage, 0, 0);
+  }
   pg.endDraw();
 }
 

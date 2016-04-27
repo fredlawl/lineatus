@@ -27,7 +27,8 @@ public void lstOnLineHeavinessChange(GDropList source, GEvent event) { //_CODE_:
 } //_CODE_:lstLineHeaviness:704182:
 
 public void btnOnUploadPush(GButton source, GEvent event) { //_CODE_:btnUpload:422591:
-  println("btnUpload - GButton >> GEvent." + event + " @ " + millis());
+  //println("btnUpload - GButton >> GEvent." + event + " @ " + millis());
+  selectInput("Select a file to process:", "fileSelected");
 } //_CODE_:btnUpload:422591:
 
 public void btnOnCreatePush(GButton source, GEvent event) { //_CODE_:btnCreate:983292:
