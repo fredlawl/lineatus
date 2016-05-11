@@ -18,8 +18,8 @@ PImage cropImage(PImage source, int newWidth, int newHeight) {
   
   int newX = 0;
   int newY = 0;
-  for(int x = midWidth - wStep; x < midWidth + wStep; x++){
-    for(int y = midHeight - hStep; y < midHeight + hStep; y++){
+  for(int x = midWidth - (wStep + 1); x < midWidth + (wStep - 1); x++){
+    for(int y = midHeight - (hStep + 1); y < midHeight + (hStep - 1); y++){
       color c;
       if(x <= 0) c = color(255);
       else if(x >= source.width) c = color(255);
