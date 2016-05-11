@@ -35,10 +35,6 @@ public void btnOnCreatePush(GButton source, GEvent event) { //_CODE_:btnCreate:9
   println("btnBegin - GButton >> GEvent." + event + " @ " + millis());
 } //_CODE_:btnCreate:983292:
 
-public void btnOnSavePush(GButton source, GEvent event) { //_CODE_:btnSave:693946:
-  println("btnSave - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:btnSave:693946:
-
 
 
 // Create all the GUI controls. 
@@ -72,9 +68,6 @@ public void createGUI(){
   btnCreate = new GButton(this, 530, 390, 250, 60);
   btnCreate.setText("Create Art");
   btnCreate.addEventHandler(this, "btnOnCreatePush");
-  btnSave = new GButton(this, 530, 470, 250, 30);
-  btnSave.setText("Save Image");
-  btnSave.addEventHandler(this, "btnOnSavePush");
   lblNumOfLines = new GLabel(this, 520, 70, 80, 30);
   lblNumOfLines.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
   lblNumOfLines.setText("Number of Lines");
