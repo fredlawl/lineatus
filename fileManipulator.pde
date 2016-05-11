@@ -3,21 +3,8 @@ void fileSelected(File selection) {
     println("Window was closed or the user hit cancel.");
   } else {
     uploadedImage = loadImage(selection.getAbsolutePath());
-    grayScale(uploadedImage);
     uploadedImage = cropImage(uploadedImage, 512, 512);
   }
-}
-
-void grayScale(PImage img) {
-  img.loadPixels();
-  for (int i = 0; i < img.pixels.length; i++) {
-    color pixel = img.pixels[i];
-    float r = ((pixel >> 16) & 0xFF) * 0.21;
-    float g = ((pixel >> 8) & 0xFF) * 0.72;
-    float b = ((pixel) & 0xFF) * 0.07;
-    img.pixels[i] = color(r + g + b);
-  }
-  img.updatePixels();
 }
 
 PImage cropImage(PImage source, int newWidth, int newHeight) {
@@ -33,7 +20,12 @@ PImage cropImage(PImage source, int newWidth, int newHeight) {
   int newY = 0;
   for(int x = midWidth - wStep; x < midWidth + wStep; x++){
     for(int y = midHeight - hStep; y < midHeight + hStep; y++){
-      color c = source.get(x,y);
+      color c;
+      if(x <= 0) c = color(255);
+      else if(x >= source.width) c = color(255);
+      else if(y <= 0) c = color(255);
+      else if(y >= source.height) c = color(255);
+      else c = source.get(x,y);
       
       target.set(newX,newY,c);
       newY++;

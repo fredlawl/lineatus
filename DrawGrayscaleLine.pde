@@ -1,5 +1,13 @@
 class DrawGrayscaleLine implements IDrawLineStrategy {
   
+  private int opacity;
+  private PGraphics pg;
+  
+  DrawGrayscaleLine(PGraphics pg, int opacity) {
+    this.opacity = opacity;
+    this.pg = pg;
+  }
+  
   public color toGrayscale(color col) {
     float r, g, b;
     
@@ -11,8 +19,8 @@ class DrawGrayscaleLine implements IDrawLineStrategy {
   }
   
   public void drawLine(Line line) {
-    stroke(this.toGrayscale(line.getAvgColor()), 10);
-    line.drawLine();
+    pg.stroke(this.toGrayscale(line.getAvgColor()), opacity);
+    line.drawLine(pg);
   } 
   
 }

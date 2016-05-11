@@ -83,7 +83,7 @@ class LineDrawer {
     }
     
     // IDK why, but this hack right here allows for the drawing to draw more than one line :p
-    stroke(#ff0000);
+    fill(#ff0000);
     
     return lines;
   }

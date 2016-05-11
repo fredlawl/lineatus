@@ -36,10 +36,10 @@ class Line {
     return avgColor;
   }
   
-  public void drawLine() {
+  public void drawLine(PGraphics pg) {
     Point start = getStartPoint();
     Point end = getEndPoint();
-    line(start.x, start.y, end.x, end.y);    
+    pg.line(start.x, start.y, end.x, end.y);    
   }
   
   private color avgColorOfLine() {

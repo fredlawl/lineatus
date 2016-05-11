@@ -15,24 +15,42 @@
  */
 
 public void tbOnNumOfLinesChange(GTextField source, GEvent event) { //_CODE_:tbNumOfLines:220142:
-  println("tbNumOfLines - GTextField >> GEvent." + event + " @ " + millis());
+  numLines = parseInt(source.getText());
 } //_CODE_:tbNumOfLines:220142:
 
 public void tbOnNumGenerationsChange(GTextField source, GEvent event) { //_CODE_:tbNumOfGenerations:841034:
-  println("tbNumOfGenerations - GTextField >> GEvent." + event + " @ " + millis());
+  numGenerations = parseInt(source.getText());
 } //_CODE_:tbNumOfGenerations:841034:
 
 public void lstOnLineHeavinessChange(GDropList source, GEvent event) { //_CODE_:lstLineHeaviness:704182:
-  println("lstLineHeavyness - GDropList >> GEvent." + event + " @ " + millis());
+  opacityLvl = parseInt(source.getSelectedText());
 } //_CODE_:lstLineHeaviness:704182:
 
 public void btnOnUploadPush(GButton source, GEvent event) { //_CODE_:btnUpload:422591:
-  //println("btnUpload - GButton >> GEvent." + event + " @ " + millis());
   selectInput("Select a file to process:", "fileSelected");
 } //_CODE_:btnUpload:422591:
 
 public void btnOnCreatePush(GButton source, GEvent event) { //_CODE_:btnCreate:983292:
-  println("btnBegin - GButton >> GEvent." + event + " @ " + millis());
+  
+  if (uploadedImage == null)
+    return;
+  
+  isGenerating = true;
+  drawer = new LineDrawer(uploadedImage);
+  drawer.setNumOfGenerations(numGenerations);
+  drawer.setNumOfLines(numLines);
+  
+  drawer.setFindDarkestPixelAlgorithm(new FindNextDarkestPixel());
+  drawer.setDarkestLineAlgorithm(new FindDarkestLine());
+  drawer.setLineGenerationAlgorithm(new GenerateLine());
+  drawer.setDrawLineAlgorithm(new DrawGrayscaleLine(pg, opacityLvl));
+  //drawer.setDrawLineAlgorithm(new DrawColorLine(pg));
+  
+  pg.beginDraw();
+  pg.background(255);
+  drawer.generate();
+  pg.endDraw();
+  
 } //_CODE_:btnCreate:983292:
 
 
@@ -59,9 +77,11 @@ public void createGUI(){
   tbNumOfGenerations.setPromptText("Number of Generations");
   tbNumOfGenerations.setOpaque(true);
   tbNumOfGenerations.addEventHandler(this, "tbOnNumGenerationsChange");
-  lstLineHeaviness = new GDropList(this, 620, 170, 160, 210, 6);
+  
+  lstLineHeaviness = new GDropList(this, 620, 170, 160, 150, 8);
   lstLineHeaviness.setItems(loadStrings("list_704182"), 0);
-  lstLineHeaviness.addEventHandler(this, "lstOnLineHeavinessChange");
+  lstLineHeaviness.addEventHandler(this, "lstOnLineHeavinessChange"); 
+  
   btnUpload = new GButton(this, 530, 340, 250, 30);
   btnUpload.setText("Upload Photo");
   btnUpload.addEventHandler(this, "btnOnUploadPush");
@@ -78,7 +98,7 @@ public void createGUI(){
   lblNumGenerations.setOpaque(false);
   lblLineHeavyness = new GLabel(this, 520, 170, 80, 30);
   lblLineHeavyness.setTextAlign(GAlign.RIGHT, GAlign.MIDDLE);
-  lblLineHeavyness.setText("Line Heaviness");
+  lblLineHeavyness.setText("Opacity");
   lblLineHeavyness.setOpaque(false);
 }
 
