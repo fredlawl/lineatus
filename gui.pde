@@ -44,11 +44,16 @@ public void btnOnCreatePush(GButton source, GEvent event) { //_CODE_:btnCreate:9
   drawer.setDarkestLineAlgorithm(new FindDarkestLine());
   drawer.setLineGenerationAlgorithm(new GenerateLine());
   drawer.setDrawLineAlgorithm(new DrawGrayscaleLine(pg, opacityLvl));
-  //drawer.setDrawLineAlgorithm(new DrawColorLine(pg));
+  //drawer.setDrawLineAlgorithm(new DrawColorLine(pg, opacityLvl));
   
   pg.beginDraw();
   pg.background(255);
+  pg.colorMode(ARGB);
+  pg.blendMode(MULTIPLY);
+  pg.strokeWeight(1);
+
   drawer.generate();
+  
   pg.endDraw();
   
 } //_CODE_:btnCreate:983292:

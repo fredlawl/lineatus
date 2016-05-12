@@ -1,5 +1,5 @@
 class LineDrawer {
-  private PImage originalImg, resultImg;
+  private PImage originalImg;
   private int numOfGenerations, numOfLines;
   private int totalPixelsInImage;
   
@@ -83,7 +83,7 @@ class LineDrawer {
     }
     
     // IDK why, but this hack right here allows for the drawing to draw more than one line :p
-    fill(#ff0000);
+    //fill(#ff0000);
     
     return lines;
   }

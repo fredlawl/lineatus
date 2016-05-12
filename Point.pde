@@ -6,7 +6,7 @@ class Point {
   Point(int x, int y) {
     this.x = x;
     this.y = y;
-    col = color(255);
+    this.col = color(255);
   }
   
   Point(int x, int y, color col) {

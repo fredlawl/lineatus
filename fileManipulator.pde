@@ -2,6 +2,7 @@ void fileSelected(File selection) {
   if (selection == null) {
     println("Window was closed or the user hit cancel.");
   } else {
+    isGenerating = false;
     uploadedImage = loadImage(selection.getAbsolutePath());
     uploadedImage = cropImage(uploadedImage, 512, 512);
   }

@@ -16,19 +16,12 @@ public void setup(){
   surface.setResizable(false);
   createGUI();
   customGUI();
-  
-  // Canvas Setup
-  colorMode(ARGB);
-  blendMode(MULTIPLY);
-  strokeWeight(1);
 }
 
 public void draw(){
   if (!isGenerating) {
     background(230);
     drawSketch();
-  } else {
-    noLoop();
   }
 }
 
